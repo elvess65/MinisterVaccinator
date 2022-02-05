@@ -37,23 +37,13 @@ namespace CoreFramework.UI.View
         {
             for (int i = 0; i < m_Widgets.Count; i++)
             {
-                bool skipWidget = false;
-                if (excludedFromActivatingWidgets != null)
+                if (!SkipWidget(m_Widgets[i], excludedFromActivatingWidgets))
                 {
-                    for (int j = 0; j < excludedFromActivatingWidgets.Length; j++)
-                    {
-                        if (m_Widgets[i] == excludedFromActivatingWidgets[j])
-                        {
-                            skipWidget = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (!skipWidget)
                     m_Widgets[i].SetWidgetActive(isEnabled, isAnimated);
+                }
             }
         }
+
 
         /// <summary>
         /// Регистрирует виджет с списке управляемых (для включения/отключения)
@@ -62,6 +52,26 @@ namespace CoreFramework.UI.View
         protected void RegisterWidget(UIWidget widget)
         {
             m_Widgets.Add(widget);
+        }
+
+        /// <summary>
+        /// Попадает ли текущий виджет в список исключений
+        /// </summary>
+        /// <returns></returns>
+        private bool SkipWidget(UIWidget currentWidget, UIWidget[] excludedFromActivatingWidgets)
+        {
+            if (excludedFromActivatingWidgets != null)
+            {
+                for (int j = 0; j < excludedFromActivatingWidgets.Length; j++)
+                {
+                    if (currentWidget == excludedFromActivatingWidgets[j])
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }

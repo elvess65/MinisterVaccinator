@@ -5,14 +5,14 @@ namespace MinisterVaccinator.Models
     public class GameModel : BaseModel
     {
         /// <summary>
-        /// Menu in waiting to be ready
+        /// Main Menu in waiting to be ready
         /// </summary>
-        public System.Action OnMenuPending;
+        public System.Action OnMainMenuPending;
 
         /// <summary>
-        /// Menu is ready
+        /// Main Menu is ready
         /// </summary>
-        public System.Action OnMenuReady;
+        public System.Action OnMainMenuReady;
 
         /// <summary>
         /// Play button pressed

@@ -16,16 +16,16 @@ namespace MinisterVaccinator.Widgets
             m_GameDataModel = Dispatcher.GetModel<GameDataModel>();
             m_GameplayModel = Dispatcher.GetModel<GameplayModel>();
 
-            Initialize(GetTask());
+            Initialize(GetTaskDescription());
         }
 
-        private string GetTask()
+        private string GetTaskDescription()
         {
             StringBuilder strBuilder = new StringBuilder();
             strBuilder.Append("Vaccine ");
 
             //Roles
-            EnumsCollection.RetrieveRoles(m_GameplayModel.CurrentTask.RolesToVaccinate, out List<EnumsCollection.Roles> rolesBuffer);
+            EnumsCollection.RetrieveRoles(m_GameplayModel.CurrentTask.RolesToVaccinate, out var rolesBuffer);
             for (int i = 0; i < rolesBuffer.Count; i++)
             {
                 strBuilder.Append($"{rolesBuffer[i]}");
@@ -38,6 +38,8 @@ namespace MinisterVaccinator.Widgets
                         strBuilder.Append(", ");
                 }
             }
+
+            
 
             strBuilder.Append(" of age ");
 
@@ -77,6 +79,7 @@ namespace MinisterVaccinator.Widgets
                     agesToApply.RemoveAt(i--);
                 }*/
             }
+
 
             //Message
             for (int i = 0; i < agesToApply.Count; i++)

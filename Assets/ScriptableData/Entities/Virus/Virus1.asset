@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc7338d322d7c141ad5f8e7e4adfcbb, type: 3}
   m_Name: Virus1
   m_EditorClassIdentifier: 
-  SpreadSpreadSec: 0.25
+  SpreadSpreadSec: 2.5

@@ -33,8 +33,10 @@ namespace MinisterVaccinator.Controllers
             m_VaccinationModel = Dispatcher.GetModel<VaccinationModel>();
 
             m_GameModel.OnStartGame += StartGameHandler;
+
             m_GameplayModel.OnPrepareIteration += PrepareIterationHandler;
             m_GameplayModel.OnValidateResult += ValidateInputResult;
+
             m_VaccinationModel.OnAllPopulationVaccinated += OnAllPopulationVaccinated;
             m_VaccinationModel.OnAllPopulationInfected += OnAllPopulationInfected;
         }
@@ -42,9 +44,9 @@ namespace MinisterVaccinator.Controllers
 
         private void StartGameHandler()
         {
-            //Cache mode
-            m_GameplayModel.CurrentMode = m_GameDataModel.Modes[UnityEngine.Random.Range(0, m_GameDataModel.Modes.Length)];
-            m_GameplayModel.CurrentTask = m_GameplayModel.CurrentMode.Tasks[UnityEngine.Random.Range(0, m_GameplayModel.CurrentMode.Tasks.Length)];
+            //Cache mode  
+            m_GameplayModel.CurrentMode = m_GameDataModel.Modes[0];     //Get last player mode (level)
+            m_GameplayModel.CurrentTask = m_GameplayModel.CurrentMode.Tasks[UnityEngine.Random.Range(0, m_GameplayModel.CurrentMode.Tasks.Length)]; //Get random task
 
             //Cache vaccination
             m_VaccinationModel.Population = m_GameplayModel.CurrentMode.Population.Population;
@@ -65,7 +67,7 @@ namespace MinisterVaccinator.Controllers
                 m_WrongPersonsBuffer.Add(m_PersonFactory.GetWrongPerson(m_GameplayModel.CurrentMode, m_GameplayModel.CurrentTask));
 
             //Display persons
-            m_GameplayModel.OnDisplayModeIteration?.Invoke(correctPerson, m_WrongPersonsBuffer, m_GameplayModel.CurrentTask);
+            //m_GameplayModel.OnDisplayModeIteration?.Invoke(correctPerson, m_WrongPersonsBuffer, m_GameplayModel.CurrentTask);
 
             m_WrongPersonsBuffer.Clear();
         }
@@ -95,13 +97,13 @@ namespace MinisterVaccinator.Controllers
 
         private void OnAllPopulationVaccinated()
         {
-            UnityEngine.Debug.Log("Population vaccinated");
+            UnityEngine.Debug.Log("GameplayController: Population vaccinated. TODO: Show Victory window. Change state -> VictoryState");
             m_GameModel.OnStopGame?.Invoke();
         }
 
         private void OnAllPopulationInfected()
         {
-            UnityEngine.Debug.Log("Population infected");
+            UnityEngine.Debug.Log("GameplayController: Population infected. TODO: Show gameOver window. Change state -> GameOverState");
             m_GameModel.OnStopGame?.Invoke();
         }
     }

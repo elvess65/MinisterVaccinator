@@ -18,28 +18,39 @@ namespace MinisterVaccinator.Controllers
         {
             m_GameModel = Dispatcher.GetModel<GameModel>();
 
-            m_GameModel.OnMenuPending += GameInitializedHandler;
-            m_GameModel.OnMenuReady += GameReadyHandler;
-            m_GameModel.OnStartGamePressed += StartGameHandler;
+            m_GameModel.OnMainMenuPending += MainMenuPendingHandler;
+            m_GameModel.OnMainMenuReady += MainMenuReadyHandler;
+            m_GameModel.OnStartGamePressed += StartGamePressedHandler;
         }
 
-        private void GameInitializedHandler()
+        #region GameModelHandler
+
+        private void MainMenuPendingHandler()
         {
-            m_StateMachine = new GameStateMachine<GameState_Abstract>();
-            m_StateMachine.AddState(new GameState_MainMenu());
-            m_StateMachine.AddState(new GameState_Normal());
-            m_StateMachine.AddState(new GameState_Pending());
-            m_StateMachine.Initialize<GameState_Pending>();
+            InitializeStateMachine();
         }
 
-        private void GameReadyHandler()
+        private void MainMenuReadyHandler()
         {
             m_StateMachine.ChangeState<GameState_MainMenu>();
         }
 
-        private void StartGameHandler()
+        private void StartGamePressedHandler()
         {
             m_StateMachine.ChangeState<GameState_Normal>();
+        }
+
+        #endregion
+
+        private void InitializeStateMachine()
+        {
+            m_StateMachine = new GameStateMachine<GameState_Abstract>();
+
+            m_StateMachine.AddState(new GameState_MainMenu());
+            m_StateMachine.AddState(new GameState_Normal());
+            m_StateMachine.AddState(new GameState_Pending());
+
+            m_StateMachine.Initialize<GameState_Pending>();
         }
     }
 }

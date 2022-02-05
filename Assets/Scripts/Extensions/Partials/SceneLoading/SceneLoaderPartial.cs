@@ -46,11 +46,11 @@ namespace CoreFramework.SceneLoading
             if (m_GameModel == null)
                 m_GameModel = Dispatcher.GetModel<GameModel>();
 
-            m_GameModel.OnMenuPending?.Invoke();
+            m_GameModel.OnMainMenuPending?.Invoke();
 
             yield return new WaitForSeconds(ConstsCollection.INITIALIZATION_DELAY);
 
-            m_GameModel.OnMenuReady?.Invoke();
+            m_GameModel.OnMainMenuReady?.Invoke();
         }
     }
 }

@@ -57,7 +57,7 @@ namespace MinisterVaccinator.Views
             RegisterWidget(m_UIWidget_FinishGame);
 
             m_GameModel.OnStartGame += StartGameHandler;
-            m_GameModel.OnStopGame += StopGameHandler;
+  
             m_GameplayModel.OnDisplayModeIteration += DisplayModeIterationHandler;
             m_VaccinationModel.OnInfectedChanged += InfectedChangedHandler;
             m_VaccinationModel.OnVaccinatedChanged += VaccinatedChangedHandler;
@@ -66,15 +66,12 @@ namespace MinisterVaccinator.Views
         private void StartGameHandler()
         {
             m_UIWidget_Task.Initialize();
+  
             m_UIWidget_Task.SetWidgetActive(true, true);
             m_UIWidget_Bar_Virus.SetWidgetActive(true, true);
             m_UIWidget_Bar_Vaccine.SetWidgetActive(true, true);
         }
 
-        private void StopGameHandler()
-        {
-            Debug.Log("STOP GAME");
-        }
 
         private void DisplayModeIterationHandler(EntityData_Person correctPerson, List<EntityData_Person> wrongPersons, EntityData_Task task)
         {

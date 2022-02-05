@@ -26,16 +26,16 @@ namespace MinisterVaccinator.Controllers
             m_GameDataModel = Dispatcher.GetModel<GameDataModel>();
             m_VaccinationModel = Dispatcher.GetModel<VaccinationModel>();
 
-            m_GameModel.OnStartGame += HandleStartGame;
-            m_GameModel.OnStopGame += HandleStopGame;
+            m_GameModel.OnStartGame += StartGameHandler;
+            m_GameModel.OnStopGame += StopGameHandler;
         }
 
-        private void HandleStartGame()
+        private void StartGameHandler()
         {
             m_UpdateModel.OnUpdate += HandleUpdate;
         }
 
-        private void HandleStopGame()
+        private void StopGameHandler()
         {
             m_UpdateModel.OnUpdate -= HandleUpdate;
         }

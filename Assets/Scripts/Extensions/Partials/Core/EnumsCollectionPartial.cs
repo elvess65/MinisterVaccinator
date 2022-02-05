@@ -27,18 +27,18 @@ namespace CoreFramework
             Vaccinated
         }
 
-        public static void RetrieveRoles(EnumsCollection.Roles roles, out List<EnumsCollection.Roles> buffer)
+        public static void RetrieveRoles(EnumsCollection.Roles roles, out List<Roles> buffer)
         {
             buffer = new List<Roles>();
             RetrieveRolesToBuffer(roles, ref buffer);
         }
 
-        public static void RetrieveRolesToBuffer(EnumsCollection.Roles roles, ref List<EnumsCollection.Roles> buffer)
+        public static void RetrieveRolesToBuffer(Roles roles, ref List<Roles> buffer)
         {
             buffer.Clear();
-
+             
             ulong flag = 1;
-            foreach (EnumsCollection.Roles role in System.Enum.GetValues(typeof(EnumsCollection.Roles)))
+            foreach (Roles role in System.Enum.GetValues(typeof(Roles)))
             {
                 ulong bits = System.Convert.ToUInt64(role);
 

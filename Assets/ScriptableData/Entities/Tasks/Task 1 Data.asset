@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Task 1 Data
   m_EditorClassIdentifier: 
   Cure: {fileID: 11400000, guid: 1305261d178433d42b16f2dc02227bee, type: 2}
-  RolesToVaccinate: 3
+  RolesToVaccinate: 1
