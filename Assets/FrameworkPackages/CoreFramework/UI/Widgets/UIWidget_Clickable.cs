@@ -18,6 +18,12 @@ namespace CoreFramework.UI.Widget
             WidgetButton.enabled = !isLocked;
         }
 
+        public override void ResetEvents()
+        {
+            base.ResetEvents();
+
+            OnWidgetPress = null;
+        }
 
         protected override void InternalInitialize()
         {

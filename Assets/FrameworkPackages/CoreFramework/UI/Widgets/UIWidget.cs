@@ -57,6 +57,12 @@ namespace CoreFramework.UI.Widget
             Dispatcher.RemoveDisposable(this);
         }
 
+        public virtual void ResetEvents()
+        {
+            OnShowSequenceFinished = null;
+            OnHideSequenceFinished = null;
+        }
+
 
         protected virtual void InternalInitialize()
         {

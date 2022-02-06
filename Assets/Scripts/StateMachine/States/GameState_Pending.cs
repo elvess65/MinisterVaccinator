@@ -12,6 +12,7 @@
 
             m_UIModel.UIViewGame.SetWidgetsActive(false, false);
             m_UIModel.UIViewMenu.SetWidgetsActive(false, false);
+            m_UIModel.UIViewFinishGame.SetWidgetsActive(false, false);
         }
     }
 }

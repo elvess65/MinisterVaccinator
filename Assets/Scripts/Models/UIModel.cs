@@ -7,5 +7,6 @@ namespace MinisterVaccinator.Models
     {
         public UIView_Game UIViewGame;
         public UIView_Menu UIViewMenu;
+        public UIView_FinishGame UIViewFinishGame;
     }
 }

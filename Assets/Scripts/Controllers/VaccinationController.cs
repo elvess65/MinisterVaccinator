@@ -30,15 +30,9 @@ namespace MinisterVaccinator.Controllers
             m_GameModel.OnStopGame += StopGameHandler;
         }
 
-        private void StartGameHandler()
-        {
-            m_UpdateModel.OnUpdate += HandleUpdate;
-        }
+        private void StartGameHandler() => m_UpdateModel.OnUpdate += HandleUpdate;
 
-        private void StopGameHandler()
-        {
-            m_UpdateModel.OnUpdate -= HandleUpdate;
-        }
+        private void StopGameHandler(bool result) => m_UpdateModel.OnUpdate -= HandleUpdate;
 
         private void HandleUpdate(float deltaTime)
         {

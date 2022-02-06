@@ -35,10 +35,10 @@ namespace MinisterVaccinator.Controllers
             m_GameModel.OnStartGame += StartGameHandler;
 
             m_GameplayModel.OnPrepareIteration += PrepareIterationHandler;
-            m_GameplayModel.OnValidateResult += ValidateInputResult;
+            m_GameplayModel.OnValidateResult += ValidateInputResultHandler;
 
-            m_VaccinationModel.OnAllPopulationVaccinated += OnAllPopulationVaccinated;
-            m_VaccinationModel.OnAllPopulationInfected += OnAllPopulationInfected;
+            m_VaccinationModel.OnAllPopulationVaccinated += PopulationVaccinatedHandler;
+            m_VaccinationModel.OnAllPopulationInfected += PopulationInfectedHandler;
         }
 
 
@@ -67,12 +67,12 @@ namespace MinisterVaccinator.Controllers
                 m_WrongPersonsBuffer.Add(m_PersonFactory.GetWrongPerson(m_GameplayModel.CurrentMode, m_GameplayModel.CurrentTask));
 
             //Display persons
-            //m_GameplayModel.OnDisplayModeIteration?.Invoke(correctPerson, m_WrongPersonsBuffer, m_GameplayModel.CurrentTask);
+            m_GameplayModel.OnDisplayModeIteration?.Invoke(correctPerson, m_WrongPersonsBuffer, m_GameplayModel.CurrentTask);
 
             m_WrongPersonsBuffer.Clear();
         }
 
-        private bool ValidateInputResult(EntityData_Person person)
+        private bool ValidateInputResultHandler(EntityData_Person person)
         {
             bool correctAge = false;
 
@@ -95,16 +95,8 @@ namespace MinisterVaccinator.Controllers
             return isSuccess;
         }
 
-        private void OnAllPopulationVaccinated()
-        {
-            UnityEngine.Debug.Log("GameplayController: Population vaccinated. TODO: Show Victory window. Change state -> VictoryState");
-            m_GameModel.OnStopGame?.Invoke();
-        }
+        private void PopulationVaccinatedHandler() => m_GameModel.OnStopGame?.Invoke(true);
 
-        private void OnAllPopulationInfected()
-        {
-            UnityEngine.Debug.Log("GameplayController: Population infected. TODO: Show gameOver window. Change state -> GameOverState");
-            m_GameModel.OnStopGame?.Invoke();
-        }
+        private void PopulationInfectedHandler() => m_GameModel.OnStopGame?.Invoke(false);
     }
 }

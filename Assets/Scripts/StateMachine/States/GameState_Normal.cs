@@ -12,8 +12,7 @@
 
             m_UIModel.UIViewGame.SetWidgetsActive(true, true, m_UIModel.UIViewGame.ExposedWidgetTask, 
                                                               m_UIModel.UIViewGame.ExposedWidget_Bar_Virus, 
-                                                              m_UIModel.UIViewGame.ExposedWidget_Bar_Vaccine, 
-                                                              m_UIModel.UIViewGame.ExposedWidget_FinishGame);
+                                                              m_UIModel.UIViewGame.ExposedWidget_Bar_Vaccine);
         }
 
         public override void ExitState()

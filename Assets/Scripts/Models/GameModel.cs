@@ -27,6 +27,6 @@ namespace MinisterVaccinator.Models
         /// <summary>
         /// Game has stopped
         /// </summary>
-        public System.Action OnStopGame;
+        public System.Action<bool> OnStopGame;
     }
 }
