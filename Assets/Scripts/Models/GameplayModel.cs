@@ -12,5 +12,6 @@ namespace MinisterVaccinator.Models
 
         public EntityData_Mode CurrentMode;
         public EntityData_Task CurrentTask;
+        public int CurrentLevel = 0;
     }
 }

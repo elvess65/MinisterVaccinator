@@ -6,6 +6,7 @@ namespace MinisterVaccinator.Models
 {
     public class GameDataModel : BaseModel
     {
+        public int CurrentLevel;
         public UIAssets UIAssets;
         public UISpriteAssets UISpriteAssets;
         public EntityData_Mode[] Modes;

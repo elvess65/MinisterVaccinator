@@ -10,6 +10,8 @@ namespace MinisterVaccinator.Assets.Battle
         public Sprite[] Hair;
         public Sprite[] Kit;
         public Color[] Background;
+        public Sprite Victory;
+        public Sprite GameOver;
 
         public T GetRandomElementFrom<T>(T[] arr)
         {

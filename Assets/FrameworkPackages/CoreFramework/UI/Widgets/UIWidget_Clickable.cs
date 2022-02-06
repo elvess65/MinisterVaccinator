@@ -12,11 +12,7 @@ namespace CoreFramework.UI.Widget
 
         [SerializeField] public Button WidgetButton;
 
-
-        public override void LockInput(bool isLocked)
-        {
-            WidgetButton.enabled = !isLocked;
-        }
+        public override void LockInput(bool isLocked) => WidgetButton.enabled = !isLocked;
 
         public override void ResetEvents()
         {
@@ -32,9 +28,6 @@ namespace CoreFramework.UI.Widget
             WidgetButton.onClick.AddListener(WidgetPressHandler);
         }
 
-        protected virtual void WidgetPressHandler()
-        {
-            OnWidgetPress?.Invoke();
-        }
+        protected virtual void WidgetPressHandler() => OnWidgetPress?.Invoke();
     }
 }

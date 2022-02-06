@@ -42,12 +42,13 @@ namespace CoreFramework.UI.Widget
                 else
                     PrepareToPlayActivationAnimation(isEnabled);
             }
-            else 
+            else
+            {
                 Root.localScale = isEnabled ? Vector3.one : Vector3.zero;
+            }
         }
 
-        public virtual void LockInput(bool isLocked)
-        { }
+        public virtual void LockInput(bool isLocked) { }
 
         public virtual void Dispose()
         {
@@ -72,10 +73,7 @@ namespace CoreFramework.UI.Widget
             m_UpdateModel.OnUpdate += WidgetUpdate;
         }
 
-        protected virtual void WidgetUpdate(float deltaTime)
-        {
-            PlayActivationAnimation();
-        }
+        protected virtual void WidgetUpdate(float deltaTime) => PlayActivationAnimation();
 
 
         private void PrepareToPlaySequence(bool isEnabled)
@@ -113,15 +111,8 @@ namespace CoreFramework.UI.Widget
             }
         }
 
+        private void ShowSequenceFinishedHandler() => OnShowSequenceFinished?.Invoke();
 
-        private void ShowSequenceFinishedHandler()
-        {
-            OnShowSequenceFinished?.Invoke();
-        }
-
-        private void HideSequenceFinishedHandler()
-        {
-            OnHideSequenceFinished?.Invoke();
-        }
+        private void HideSequenceFinishedHandler() => OnHideSequenceFinished?.Invoke();
     }
 }

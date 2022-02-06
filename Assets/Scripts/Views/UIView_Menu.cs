@@ -57,6 +57,8 @@ namespace MinisterVaccinator.Views
 
         private void UIWidgetPlayButtonPressHandler()
         {
+            m_UIWidget_PlayButton.LockInput(true);
+
             foreach (Animator animator in m_IdleAnimators)
                 animator.SetTrigger("ToNone");
 

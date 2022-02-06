@@ -19,6 +19,7 @@ namespace MinisterVaccinator.Controllers
             m_GameModel = Dispatcher.GetModel<GameModel>();
 
             m_GameModel.OnMainMenuPending += MainMenuPendingHandler;
+            m_GameModel.OnPending += PendingHandler;
             m_GameModel.OnMainMenuReady += MainMenuReadyHandler;
             m_GameModel.OnStartGamePressed += StartGamePressedHandler;
             m_GameModel.OnStopGame += StopGameHandler;
@@ -27,6 +28,8 @@ namespace MinisterVaccinator.Controllers
         #region GameModelHandler
 
         private void MainMenuPendingHandler() => InitializeStateMachine();
+
+        private void PendingHandler() => m_StateMachine.ChangeState<GameState_Pending>();
 
         private void MainMenuReadyHandler() => m_StateMachine.ChangeState<GameState_MainMenu>();
 
@@ -55,8 +58,9 @@ namespace MinisterVaccinator.Controllers
             m_StateMachine.AddState(new GameState_Pending());
             m_StateMachine.AddState(new GameState_Victory());
             m_StateMachine.AddState(new GameState_GameOver());
+            m_StateMachine.AddState(new GameState_MainMenuPending());
 
-            m_StateMachine.Initialize<GameState_Pending>();
+            m_StateMachine.Initialize<GameState_MainMenuPending>();
         }
     }
 }

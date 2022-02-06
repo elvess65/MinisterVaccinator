@@ -8,6 +8,7 @@ namespace MinisterVaccinator.Data.DataBaseLocal
     [CreateAssetMenu(fileName = "New Local GameData", menuName = "DBLocal/GameData", order = 101)]
     public class DBLocal_GameData : ScriptableObject
     {
+        public int CurrentLevel;
         public UIAssets UIAssets;
         public UISpriteAssets UISpriteAssets;
         public EntityData_Mode[] Modes;

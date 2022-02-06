@@ -44,9 +44,11 @@ namespace MinisterVaccinator.Controllers
 
         private void StartGameHandler()
         {
+            m_GameplayModel.CurrentLevel = m_GameDataModel.CurrentLevel;
+
             //Cache mode  
-            m_GameplayModel.CurrentMode = m_GameDataModel.Modes[0];     //Get last player mode (level)
-            m_GameplayModel.CurrentTask = m_GameplayModel.CurrentMode.Tasks[UnityEngine.Random.Range(0, m_GameplayModel.CurrentMode.Tasks.Length)]; //Get random task
+            m_GameplayModel.CurrentMode = m_GameDataModel.Modes[m_GameplayModel.CurrentLevel];     //Get level
+            m_GameplayModel.CurrentTask = m_GameplayModel.CurrentMode.Tasks[UnityEngine.Random.Range(0, m_GameplayModel.CurrentMode.Tasks.Length)]; //Get random task from level
 
             //Cache vaccination
             m_VaccinationModel.Population = m_GameplayModel.CurrentMode.Population.Population;

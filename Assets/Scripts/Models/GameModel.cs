@@ -8,6 +8,11 @@ namespace MinisterVaccinator.Models
         /// Main Menu in waiting to be ready
         /// </summary>
         public System.Action OnMainMenuPending;
+        
+        /// <summary>
+        /// Any screen is waiting
+        /// </summary>
+        public System.Action OnPending;
 
         /// <summary>
         /// Main Menu is ready

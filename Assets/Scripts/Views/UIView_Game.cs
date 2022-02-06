@@ -110,6 +110,21 @@ namespace MinisterVaccinator.Views
 
         #region Card Sequence
 
+        private UIWidget_PersonCard CreateCard(EntityData_Person personData)
+        {
+            UIWidget_PersonCard personCard = m_GameDataModel.UIAssets.InstantiatePrefab(m_GameDataModel.UIAssets.PersonCardPrefab);
+            personCard.Root.SetParent(m_CardsParent);
+            personCard.transform.localPosition = Vector3.zero;
+            personCard.Initialize(personData);
+
+            personCard.OnShowSequenceFinished += PersonCardShowAnimationFinished;
+            personCard.OnHideSequenceFinished += PersonCardHideAnimationFinished;
+            personCard.OnWidgetPress += () => PersonCardPressHandler(personCard);
+
+            return personCard;
+        }
+
+
         private void PersonCardPressHandler(UIWidget_PersonCard selectedPersonCard)
         {
             HideCards();
@@ -149,20 +164,6 @@ namespace MinisterVaccinator.Views
 
         #region Tools
 
-        private UIWidget_PersonCard CreateCard(EntityData_Person personData)
-        {
-            UIWidget_PersonCard personCard = m_GameDataModel.UIAssets.InstantiatePrefab(m_GameDataModel.UIAssets.PersonCardPrefab);
-            personCard.Root.SetParent(m_CardsParent);
-            personCard.transform.localPosition = Vector3.zero;
-            personCard.Initialize(personData);
-
-            personCard.OnShowSequenceFinished += PersonCardShowAnimationFinished;
-            personCard.OnHideSequenceFinished += PersonCardHideAnimationFinished;
-            personCard.OnWidgetPress += () => PersonCardPressHandler(personCard);
-
-            return personCard;
-        }
-    
         private void HideCards()
         {
             foreach (UIWidget_PersonCard card in m_CardsBuffer)

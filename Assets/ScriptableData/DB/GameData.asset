@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114d091429e2649b99e7195cbef93644, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
+  CurrentLevel: 0
   UIAssets: {fileID: 11400000, guid: d94996cf14bf6834aa9c8a790f5333a3, type: 2}
   UISpriteAssets: {fileID: 11400000, guid: 42ce2ff41af39fe488edc07e629bb38d, type: 2}
-  DBAgeGroups: {fileID: 11400000, guid: da4ceb8cce4cf984987d7bcd75d029ad, type: 2}
   Modes:
   - {fileID: 11400000, guid: f77fd1708f5fed441ae77886e24ee789, type: 2}
   - {fileID: 11400000, guid: 47a2161c60f936441b5cbe17bd7b74a2, type: 2}
