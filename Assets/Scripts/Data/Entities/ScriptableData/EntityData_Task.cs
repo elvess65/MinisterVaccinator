@@ -10,7 +10,7 @@ namespace MinisterVaccinator.Data.Entities
     {
         [Header("Which cure will be used and which roles should be vaccinated")]
         public EntityData_Cure Cure;
-        public EnumsCollection.Roles RolesToVaccinate;
+        public EnumsCollection.RolesFlags RolesToVaccinate;
 
         public override string ToString()
         {

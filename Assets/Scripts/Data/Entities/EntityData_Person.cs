@@ -4,7 +4,7 @@ namespace MinisterVaccinator.Data.Entities
 {
     public class EntityData_Person 
     {
-        public EnumsCollection.Roles Role;
+        public EnumsCollection.RolesFlags Role;
         public int Age;
     }
 }

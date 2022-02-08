@@ -4,8 +4,17 @@ namespace CoreFramework
 {
     public static partial class EnumsCollection
     {
-        [System.Flags]
         public enum Roles
+        {
+            Medic = 0,
+            Military = 1,
+            Student = 2,
+            Uneployed = 3,
+            Teacher = 4
+        }
+
+        [System.Flags]
+        public enum RolesFlags
         {
             Medic = (1 << 0),
             Military = (1 << 1),
@@ -27,18 +36,18 @@ namespace CoreFramework
             Vaccinated
         }
 
-        public static void RetrieveRoles(EnumsCollection.Roles roles, out List<Roles> buffer)
+        public static void RetrieveRoles(EnumsCollection.RolesFlags roles, out List<RolesFlags> buffer)
         {
-            buffer = new List<Roles>();
+            buffer = new List<RolesFlags>();
             RetrieveRolesToBuffer(roles, ref buffer);
         }
 
-        public static void RetrieveRolesToBuffer(Roles roles, ref List<Roles> buffer)
+        public static void RetrieveRolesToBuffer(RolesFlags roles, ref List<RolesFlags> buffer)
         {
             buffer.Clear();
              
             ulong flag = 1;
-            foreach (Roles role in System.Enum.GetValues(typeof(Roles)))
+            foreach (RolesFlags role in System.Enum.GetValues(typeof(RolesFlags)))
             {
                 ulong bits = System.Convert.ToUInt64(role);
 
