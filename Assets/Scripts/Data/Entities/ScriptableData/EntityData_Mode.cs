@@ -17,7 +17,7 @@ namespace MinisterVaccinator.Data.Entities
         [Space]
         [Header("Display")]
         public int PersonsToShow = 2;
-        public EnumsCollection.Roles RolesToShow;
+        public EnumsCollection.RolesFlags RolesToShow;
         [MinMaxSlider(1, 100)]
         public MinMax AgeToShow;
 

@@ -4,6 +4,7 @@ using MinisterVaccinator.Data.Entities;
 using MinisterVaccinator.Models;
 using UnityEngine;
 using UnityEngine.UI;
+using static CoreFramework.EnumsCollection;
 
 namespace MinisterVaccinator.Widgets
 {
@@ -20,10 +21,7 @@ namespace MinisterVaccinator.Widgets
         [SerializeField] private Image Image_Kit = null;
         [SerializeField] private Image Image_Background = null;
 
-        private UISpriteAssets m_SpriteAssets;
-
         public EntityData_Person PersonData { get; private set; }
-
 
         public void Initialize(EntityData_Person personData)
         {
@@ -34,25 +32,21 @@ namespace MinisterVaccinator.Widgets
             LockInput(true);
 
             PersonData = personData;
-
-            GameDataModel gameDataModel = Dispatcher.GetModel<GameDataModel>();
-            m_SpriteAssets = gameDataModel.UISpriteAssets;
-
-            GenerateRandomPersonIcon();
             ShowPersonData(personData);
-        }
-
-        private void GenerateRandomPersonIcon()
-        {
-            Image_Body.sprite = m_SpriteAssets.GetRandomElementFrom(m_SpriteAssets.Body);
-            Image_Face.sprite = m_SpriteAssets.GetRandomElementFrom(m_SpriteAssets.Face);
-            Image_Hair.sprite = m_SpriteAssets.GetRandomElementFrom(m_SpriteAssets.Hair);
-            Image_Kit.sprite = m_SpriteAssets.GetRandomElementFrom(m_SpriteAssets.Kit);
-            Image_Background.color = m_SpriteAssets.GetRandomElementFrom(m_SpriteAssets.Background);
         }
 
         private void ShowPersonData(EntityData_Person personData)
         {
+            GameDataModel gameDataModel = Dispatcher.GetModel<GameDataModel>();
+            UIPersonAssets uiPersonAssets = gameDataModel.UISpriteAssets.GetUIPersonAssets((Roles)personData.Role, personData.Age);
+
+            Image_Body.sprite = uiPersonAssets.GetRandomBody();
+            Image_Face.sprite = uiPersonAssets.GetRandomFace();
+            Image_Hair.sprite = uiPersonAssets.GetRandomHair();
+            Image_Kit.sprite = uiPersonAssets.GetRandomKit();
+           
+            Image_Background.color = gameDataModel.UISpriteAssets.GetRandomElementFrom(gameDataModel.UISpriteAssets.Background);
+
             Text_Age.text = $"Age: {personData.Age}";
             Text_Role.text = personData.Role.ToString();
         }

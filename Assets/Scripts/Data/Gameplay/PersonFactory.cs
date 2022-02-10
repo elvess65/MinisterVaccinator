@@ -8,9 +8,9 @@ namespace MinisterVaccinator.Gameplay
 {
     public class PersonFactory
     {
-        private List<EnumsCollection.Roles> m_CorrectRolesBuffer = new List<EnumsCollection.Roles>();
-        private List<EnumsCollection.Roles> m_AllRolesBuffer = new List<EnumsCollection.Roles>();
-        private List<EnumsCollection.Roles> m_WrongRolesBuffer = new List<EnumsCollection.Roles>();
+        private List<EnumsCollection.RolesFlags> m_CorrectRolesBuffer = new List<EnumsCollection.RolesFlags>();
+        private List<EnumsCollection.RolesFlags> m_AllRolesBuffer = new List<EnumsCollection.RolesFlags>();
+        private List<EnumsCollection.RolesFlags> m_WrongRolesBuffer = new List<EnumsCollection.RolesFlags>();
 
         public EntityData_Person GetCorrectPerson(EntityData_Task task)
         {
@@ -25,7 +25,7 @@ namespace MinisterVaccinator.Gameplay
 
             //Pick random role
             rndIndex = Random.Range(0, m_CorrectRolesBuffer.Count);
-            EnumsCollection.Roles role = m_CorrectRolesBuffer[rndIndex];
+            EnumsCollection.RolesFlags role = m_CorrectRolesBuffer[rndIndex];
 
             //Create data
             EntityData_Person person = new EntityData_Person()
@@ -74,7 +74,7 @@ namespace MinisterVaccinator.Gameplay
             m_WrongRolesBuffer.Clear();
 
             //Fill wrong roles buffer
-            foreach (EnumsCollection.Roles allRole in m_AllRolesBuffer)
+            foreach (EnumsCollection.RolesFlags allRole in m_AllRolesBuffer)
             {
                 if (wrongRole && !m_CorrectRolesBuffer.Contains(allRole) || !wrongRole)
                 {
@@ -84,7 +84,7 @@ namespace MinisterVaccinator.Gameplay
 
             //Pick random role from buffer
             int rndIndex = Random.Range(0, m_WrongRolesBuffer.Count);
-            EnumsCollection.Roles role = m_WrongRolesBuffer[rndIndex];
+            EnumsCollection.RolesFlags role = m_WrongRolesBuffer[rndIndex];
 
             //Create data
             EntityData_Person person = new EntityData_Person()
