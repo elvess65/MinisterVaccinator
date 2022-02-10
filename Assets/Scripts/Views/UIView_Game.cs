@@ -1,5 +1,6 @@
 ﻿using CoreFramework;
 using CoreFramework.UI.View;
+using CoreFramework.UI.Widget;
 using MinisterVaccinator.Data.Entities;
 using MinisterVaccinator.Models;
 using MinisterVaccinator.Widgets;
@@ -26,9 +27,8 @@ namespace MinisterVaccinator.Views
         private List<UIWidget_PersonCard> m_CardsBuffer;
         private List<EntityData_Person> m_RandomPersonDataBuffer;
 
-        public UIWidget_Text ExposedWidgetTask => m_UIWidget_Task;
-        public UIWidget_Bar ExposedWidget_Bar_Virus => m_UIWidget_Bar_Virus;
-        public UIWidget_Bar ExposedWidget_Bar_Vaccine => m_UIWidget_Bar_Vaccine;
+        public UIWidget_InputResult ExposedWidgetInputResult => m_UIWidget_InputResult;
+
     
         public override void Initialize()
         {
@@ -65,16 +65,14 @@ namespace MinisterVaccinator.Views
         private void StartGameHandler()
         {
             m_UIWidget_Task.Initialize();
-  
-            m_UIWidget_Task.SetWidgetActive(true, true);
-            m_UIWidget_Bar_Virus.SetWidgetActive(true, true);
-            m_UIWidget_Bar_Vaccine.SetWidgetActive(true, true);
         }
 
         private void StopGameHandler(bool result)
         {
             ResetEvents();
             HideCards();
+
+            m_CardsBuffer.Clear();
         }
 
         private void DisplayModeIterationHandler(EntityData_Person correctPerson, List<EntityData_Person> wrongPersons, EntityData_Task task)
@@ -109,7 +107,7 @@ namespace MinisterVaccinator.Views
         #endregion
 
         #region Card Sequence
-
+        
         private UIWidget_PersonCard CreateCard(EntityData_Person personData)
         {
             UIWidget_PersonCard personCard = m_GameDataModel.UIAssets.InstantiatePrefab(m_GameDataModel.UIAssets.PersonCardPrefab);
@@ -124,14 +122,13 @@ namespace MinisterVaccinator.Views
             return personCard;
         }
 
-
         private void PersonCardPressHandler(UIWidget_PersonCard selectedPersonCard)
         {
             HideCards();
             m_UIWidget_InputResult.ShowResult(m_GameplayModel.OnValidateResult(selectedPersonCard.PersonData));
         }
 
-        private void PersonCardShowAnimationFinished()
+        private void PersonCardShowAnimationFinished(UIWidget sender)
         {
             m_AnimationsFinishedAmount++;
 
@@ -143,7 +140,7 @@ namespace MinisterVaccinator.Views
             LockCardsInput(false);
         }
 
-        private void PersonCardHideAnimationFinished()
+        private void PersonCardHideAnimationFinished(UIWidget sender)
         {
             m_AnimationsFinishedAmount++;
 
@@ -160,11 +157,16 @@ namespace MinisterVaccinator.Views
             m_GameplayModel.OnPrepareIteration?.Invoke();
         }
 
+        private void PersonCardHideAnimationFinishedDispose(UIWidget sender)
+        {
+            Destroy(sender.gameObject);
+        }
+
         #endregion
 
         #region Tools
 
-        private void HideCards()
+        private void HideCards(bool clearBuffer = false)
         {
             foreach (UIWidget_PersonCard card in m_CardsBuffer)
             {
@@ -178,6 +180,7 @@ namespace MinisterVaccinator.Views
             foreach (UIWidget_PersonCard card in m_CardsBuffer)
             {
                 card.ResetEvents();
+                card.OnHideSequenceFinished += PersonCardHideAnimationFinishedDispose;
             }
         }
 

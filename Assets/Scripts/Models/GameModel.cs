@@ -8,11 +8,6 @@ namespace MinisterVaccinator.Models
         /// Main Menu in waiting to be ready
         /// </summary>
         public System.Action OnMainMenuPending;
-        
-        /// <summary>
-        /// Any screen is waiting
-        /// </summary>
-        public System.Action OnPending;
 
         /// <summary>
         /// Main Menu is ready
@@ -33,5 +28,10 @@ namespace MinisterVaccinator.Models
         /// Game has stopped
         /// </summary>
         public System.Action<bool> OnStopGame;
+
+        public System.Action OnVictory;
+        public System.Action OnGameOver;
+        public System.Action OnTransitionFromGameFinishToNewGame;
+        public System.Action OnTransitionFromGameFinishToMainMenu;
     }
 }

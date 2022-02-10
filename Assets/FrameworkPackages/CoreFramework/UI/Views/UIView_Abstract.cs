@@ -9,9 +9,14 @@ namespace CoreFramework.UI.View
     /// </summary>
     public abstract class UIView_Abstract : BaseView
     {
+        public System.Action OnAllWidgetHideSequenceFinished;
+
         public Transform Root;
 
         protected List<UIWidget> m_Widgets = new List<UIWidget>();
+
+        private int m_hidingWidgets = 0;
+
 
         private void Awake()
         {
@@ -19,6 +24,7 @@ namespace CoreFramework.UI.View
         }
 
         public abstract void Initialize();
+
 
         public void LockInput(bool isLocked)
         {
@@ -35,10 +41,18 @@ namespace CoreFramework.UI.View
         /// <param name="isAnimated">Анимация при выполнении</param>
         public void SetWidgetsActive(bool isEnabled, bool isAnimated, params UIWidget[] excludedFromActivatingWidgets)
         {
+            m_hidingWidgets = 0;
+
             for (int i = 0; i < m_Widgets.Count; i++)
             {
                 if (!SkipWidget(m_Widgets[i], excludedFromActivatingWidgets))
                 {
+                    if (!isEnabled && isAnimated && m_Widgets[i].Root.gameObject.activeSelf && m_Widgets[i].HasHideSequence)
+                    {
+                        m_Widgets[i].OnHideSequenceFinished += WidgetHideSequenceFinishedHandler;
+                        m_hidingWidgets++;
+                    }
+
                     m_Widgets[i].SetWidgetActive(isEnabled, isAnimated);
                 }
             }
@@ -49,10 +63,7 @@ namespace CoreFramework.UI.View
         /// Регистрирует виджет с списке управляемых (для включения/отключения)
         /// </summary>
         /// <param name="widget"></param>
-        protected void RegisterWidget(UIWidget widget)
-        {
-            m_Widgets.Add(widget);
-        }
+        protected void RegisterWidget(UIWidget widget) => m_Widgets.Add(widget);
 
         /// <summary>
         /// Попадает ли текущий виджет в список исключений
@@ -72,6 +83,19 @@ namespace CoreFramework.UI.View
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Обработчик окончания анимации всех виджетов
+        /// </summary>
+        /// <param name="sender"></param>
+        private void WidgetHideSequenceFinishedHandler(UIWidget sender)
+        {
+            sender.OnHideSequenceFinished -= WidgetHideSequenceFinishedHandler;
+            m_hidingWidgets--;
+
+            if (m_hidingWidgets == 0)
+                OnAllWidgetHideSequenceFinished?.Invoke();
         }
     }
 }

@@ -11,8 +11,8 @@ namespace CoreFramework.UI.Widget
     {
         public Transform Root;
 
-        public Action OnShowSequenceFinished;
-        public Action OnHideSequenceFinished;
+        public Action<UIWidget> OnShowSequenceFinished;
+        public Action<UIWidget> OnHideSequenceFinished;
 
         [SerializeField] protected DOTweenSequenceAnimator m_ShowSequence = null;
         [SerializeField] protected DOTweenSequenceAnimator m_HideSequence = null;
@@ -26,6 +26,9 @@ namespace CoreFramework.UI.Widget
         private float m_TotalTime = 0.5f;
         private float m_CurrentTime;
         private Vector2 m_FromToData = Vector2.zero;
+
+        public bool HasShowSequence => m_ShowSequence != null;
+        public bool HasHideSequence => m_HideSequence != null;
 
 
         public void SetWidgetActive(bool isEnabled, bool isAnimated)
@@ -111,8 +114,8 @@ namespace CoreFramework.UI.Widget
             }
         }
 
-        private void ShowSequenceFinishedHandler() => OnShowSequenceFinished?.Invoke();
+        private void ShowSequenceFinishedHandler() => OnShowSequenceFinished?.Invoke(this);
 
-        private void HideSequenceFinishedHandler() => OnHideSequenceFinished?.Invoke();
+        private void HideSequenceFinishedHandler() => OnHideSequenceFinished?.Invoke(this);
     }
 }

@@ -20,8 +20,6 @@ namespace MinisterVaccinator.Views
         private GameModel m_GameModel;
         private GameplayModel m_GameplayModel;
 
-        public UIWidget_Image ExposedUIWidget_Success => m_UIWidget_Success;
-        public UIWidget_Image ExposedUIWidget_GameOver => m_UIWidget_GameOver;
         public UIWidget_Button ExposedUIWidget_NextButton => m_UIWidget_NextButton;
 
         public override void Initialize()
@@ -65,11 +63,12 @@ namespace MinisterVaccinator.Views
 
             if (result)
             {
-                m_UIWidget_Success.SetWidgetActive(true, true);
+                m_UIWidget_GameOver.SetDisplay(false);
+                m_UIWidget_NextButton.Root.gameObject.SetActive(true);
             }
             else
             {
-                m_UIWidget_GameOver.SetWidgetActive(true, true);
+                m_UIWidget_Success.SetDisplay(false);
                 m_UIWidget_NextButton.Root.gameObject.SetActive(false);
             }
         }
@@ -83,15 +82,16 @@ namespace MinisterVaccinator.Views
             //TODO: Restart the level
 
             Debug.Log("UIView_FinishGame - NextButtonPress. TODO: Increment level. Restart the level");
-            DisposeLevel();
+            m_GameModel.OnTransitionFromGameFinishToNewGame?.Invoke();
         }
 
         private void UIWidgetRestartButtonPressHandler()
         {
+            //m_GameplayModel.CurrentLevel++;
             //TODO: Restart the level
 
-            Debug.Log("UIView_FinishGame -tRestartButtonPress. TODO: Restart the level");
-            DisposeLevel();
+            Debug.Log("UIView_FinishGame - RestartButtonPress. TODO: Restart the level");
+            m_GameModel.OnTransitionFromGameFinishToNewGame?.Invoke();
         }
 
         private void UIWidgetMenuButtonPressHandler()
@@ -99,15 +99,7 @@ namespace MinisterVaccinator.Views
             //TODO: Go to main menu
 
             Debug.Log("UIView_FinishGame - MenuButtonPress. TODO: Go to main menu");
-            DisposeLevel();
-        }
-
-        private void DisposeLevel()
-        {
-            //if (!m_UIWidget_NextButton.Root.gameObject.activeSelf)
-            //    m_UIWidget_NextButton.Root.gameObject.SetActive(true);
-
-            m_GameModel.OnPending?.Invoke();
+            m_GameModel.OnTransitionFromGameFinishToMainMenu?.Invoke();
         }
 
         #endregion

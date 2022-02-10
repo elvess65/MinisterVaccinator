@@ -1,6 +1,6 @@
 ﻿namespace MinisterVaccinator.StateMachine
 {
-    public class GameState_MainMenuPending : GameState_Pending
+    public class GameState_MainMenuPending : GameState_Abstract
     {
         public GameState_MainMenuPending() : base()
         {

@@ -15,5 +15,7 @@ namespace MinisterVaccinator.Widgets
             if (sprite != null)
                 m_Image.sprite = sprite;
         }
+
+        public void SetDisplay(bool isDisplayed) => m_Image.enabled = isDisplayed;
     }
 }

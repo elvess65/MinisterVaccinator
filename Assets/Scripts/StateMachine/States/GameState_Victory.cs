@@ -10,8 +10,7 @@
         {
             base.EnterState();
 
-            m_UIModel.UIViewGame.SetWidgetsActive(false, true);
-            m_UIModel.UIViewFinishGame.SetWidgetsActive(true, true, m_UIModel.UIViewFinishGame.ExposedUIWidget_GameOver);
+            m_UIModel.UIViewFinishGame.SetWidgetsActive(true, true);
         }
 
         public override void ExitState()

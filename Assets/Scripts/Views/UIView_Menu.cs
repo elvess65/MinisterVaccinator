@@ -50,7 +50,7 @@ namespace MinisterVaccinator.Views
             m_UIWidget_Title.OnShowSequenceFinished += UIWidgetTitleShowSequenceFinishedHandler;
         }
 
-        private void UIWidgetTitleShowSequenceFinishedHandler()
+        private void UIWidgetTitleShowSequenceFinishedHandler(UIWidget sender)
         {
             m_UIWidgetTitleAnimator.enabled = true;
         }
@@ -80,9 +80,9 @@ namespace MinisterVaccinator.Views
             m_UIWidget_Title.OnHideSequenceFinished += TitleWidgetHideSequenceFinished;
         }
 
-        private void TitleWidgetHideSequenceFinished()
+        private void TitleWidgetHideSequenceFinished(UIWidget sender)
         {
-            m_UIWidget_Title.OnHideSequenceFinished -= TitleWidgetHideSequenceFinished;
+            sender.OnHideSequenceFinished -= TitleWidgetHideSequenceFinished;
 
             m_GameModel.OnStartGame?.Invoke();
         }
