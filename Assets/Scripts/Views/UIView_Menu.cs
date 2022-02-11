@@ -42,6 +42,8 @@ namespace MinisterVaccinator.Views
             RegisterWidget(m_UIWidget_PlayButton);
             RegisterWidget(m_UIWidget_Description);
 
+            m_GameModel.OnMainMenuReady += MainMenuReadyHandler;
+
             m_UIWidget_PlayButton.OnWidgetPress += UIWidgetPlayButtonPressHandler;
             m_HandAnimationEventHandler.OnAnimationEvent += HandAnimationEventHandler;
 
@@ -50,9 +52,21 @@ namespace MinisterVaccinator.Views
             m_UIWidget_Title.OnShowSequenceFinished += UIWidgetTitleShowSequenceFinishedHandler;
         }
 
+        private void MainMenuReadyHandler()
+        {
+            Image_FillButtonPlay.fillAmount = 0;
+            m_UIWidget_PlayButton.LockInput(false);
+        }
+
         private void UIWidgetTitleShowSequenceFinishedHandler(UIWidget sender)
         {
             m_UIWidgetTitleAnimator.enabled = true;
+
+            foreach (Animator animator in m_IdleAnimators)
+            {
+                animator.Rebind();
+                animator.Update(0);
+            }
         }
 
         private void UIWidgetPlayButtonPressHandler()
