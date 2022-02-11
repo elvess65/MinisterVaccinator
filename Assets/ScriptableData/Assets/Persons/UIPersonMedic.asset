@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c1997b4c2dcdb479713d087ef9144f, type: 3}
   m_Name: UIPersonMedic
   m_EditorClassIdentifier: 
-  Role: 0
+  Role: 1
   MinAge: 0
   MaxAge: 100
   Body:

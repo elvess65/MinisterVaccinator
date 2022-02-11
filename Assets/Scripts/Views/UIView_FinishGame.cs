@@ -19,6 +19,7 @@ namespace MinisterVaccinator.Views
         private UIModel m_UIModel;
         private GameModel m_GameModel;
         private GameplayModel m_GameplayModel;
+        private GameDataModel m_GameDataModel;
 
         public UIWidget_Button ExposedUIWidget_NextButton => m_UIWidget_NextButton;
 
@@ -27,6 +28,7 @@ namespace MinisterVaccinator.Views
             m_UIModel = Dispatcher.GetModel<UIModel>();
             m_GameModel = Dispatcher.GetModel<GameModel>();
             m_GameplayModel = Dispatcher.GetModel<GameplayModel>();
+            m_GameDataModel = Dispatcher.GetModel<GameDataModel>();
 
             GameDataModel gameDataModel = Dispatcher.GetModel<GameDataModel>();
             var spriteAssets = gameDataModel.UISpriteAssets;
@@ -77,7 +79,7 @@ namespace MinisterVaccinator.Views
 
         private void UIWidgetNextButtonPressHandler()
         {
-            m_GameplayModel.CurrentLevel++;
+            m_GameDataModel.CurrentLevel++;
 
             //TODO: Restart the level
 
@@ -87,7 +89,7 @@ namespace MinisterVaccinator.Views
 
         private void UIWidgetRestartButtonPressHandler()
         {
-            //m_GameplayModel.CurrentLevel++;
+            m_GameDataModel.CurrentLevel++;
             //TODO: Restart the level
 
             Debug.Log("UIView_FinishGame - RestartButtonPress. TODO: Restart the level");

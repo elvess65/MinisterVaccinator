@@ -6,7 +6,7 @@ namespace MinisterVaccinator.Assets.Battle
     [CreateAssetMenu(fileName = "UIPersonAssets", menuName = "Assets/UIPersonAssets", order = 101)]
     public class UIPersonAssets : ScriptableObject
     {
-        public Roles Role;
+        public RolesFlags Role;
         public int MinAge;
         public int MaxAge;
         public Sprite[] Body;

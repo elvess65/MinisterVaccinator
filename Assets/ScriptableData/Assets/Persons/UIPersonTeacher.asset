@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c1997b4c2dcdb479713d087ef9144f, type: 3}
   m_Name: UIPersonTeacher
   m_EditorClassIdentifier: 
-  Role: 4
+  Role: 16
   MinAge: 0
   MaxAge: 100
   Body:

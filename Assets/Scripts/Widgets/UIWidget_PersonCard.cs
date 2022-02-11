@@ -38,7 +38,7 @@ namespace MinisterVaccinator.Widgets
         private void ShowPersonData(EntityData_Person personData)
         {
             GameDataModel gameDataModel = Dispatcher.GetModel<GameDataModel>();
-            UIPersonAssets uiPersonAssets = gameDataModel.UISpriteAssets.GetUIPersonAssets((Roles)personData.Role, personData.Age);
+            UIPersonAssets uiPersonAssets = gameDataModel.UISpriteAssets.GetUIPersonAssets(personData.Role, personData.Age);
 
             Image_Body.sprite = uiPersonAssets.GetRandomBody();
             Image_Face.sprite = uiPersonAssets.GetRandomFace();

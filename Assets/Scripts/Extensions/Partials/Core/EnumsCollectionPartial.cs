@@ -4,15 +4,6 @@ namespace CoreFramework
 {
     public static partial class EnumsCollection
     {
-        public enum Roles
-        {
-            Medic = 0,
-            Military = 1,
-            Student = 2,
-            Uneployed = 3,
-            Teacher = 4
-        }
-
         [System.Flags]
         public enum RolesFlags
         {

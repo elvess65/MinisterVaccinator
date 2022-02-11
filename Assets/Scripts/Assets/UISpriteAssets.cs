@@ -20,7 +20,7 @@ namespace MinisterVaccinator.Assets.Battle
         {
         }
 
-        public UIPersonAssets GetUIPersonAssets(Roles role, int age)
+        public UIPersonAssets GetUIPersonAssets(RolesFlags role, int age)
         {
             for (int i = 0; i < PersonAssets.Length; ++i)
             {
