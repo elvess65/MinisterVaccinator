@@ -13,6 +13,8 @@ namespace MinisterVaccinator.Data.Entities
         [MinMaxSlider(1, 100)]
         public MinMax[] AgesToApply;
 
+        public bool HasNoAge => AgesToApply.Length == 0;
+
         public override string ToString()
         {
             StringBuilder strBuilder = new StringBuilder();

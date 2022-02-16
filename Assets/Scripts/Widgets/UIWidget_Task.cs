@@ -26,6 +26,7 @@ namespace MinisterVaccinator.Widgets
 
             //Roles
             EnumsCollection.RetrieveRoles(m_GameplayModel.CurrentTask.RolesToVaccinate, out var rolesBuffer);
+
             for (int i = 0; i < rolesBuffer.Count; i++)
             {
                 strBuilder.Append($"{rolesBuffer[i]}");
@@ -39,59 +40,59 @@ namespace MinisterVaccinator.Widgets
                 }
             }
 
-            
-
-            strBuilder.Append(" of age ");
-
-            //Merge age groups
-            List<MinMax> agesToApply = new List<MinMax>(m_GameplayModel.CurrentTask.Cure.AgesToApply);
-            for (int i = 1; i < agesToApply.Count; i++)
+            if (!m_GameplayModel.CurrentTask.Cure.HasNoAge)
             {
-               /* MinMax cur = agesToApply[i];
-                MinMax prev = agesToApply[i - 1];
+                strBuilder.Append(" of age ");
 
-                if (cur.Max < prev.Min)
-                    continue;
-
-               /* if (cur.Max >= prev.Min)
+                //Merge age groups
+                List<MinMax> agesToApply = new List<MinMax>(m_GameplayModel.CurrentTask.Cure.AgesToApply);
+                for (int i = 1; i < agesToApply.Count; i++)
                 {
-                    MinMax newMinMax = prev;
-                    newMinMax.Min = cur.Min;
+                    /* MinMax cur = agesToApply[i];
+                     MinMax prev = agesToApply[i - 1];
 
-                    if (cur.Max > prev.Max)
+                     if (cur.Max < prev.Min)
+                         continue;
+
+                    /* if (cur.Max >= prev.Min)
+                     {
+                         MinMax newMinMax = prev;
+                         newMinMax.Min = cur.Min;
+
+                         if (cur.Max > prev.Max)
+                             newMinMax.Max = cur.Max;
+
+                         agesToApply[i - 1] = newMinMax;
+                         agesToApply.RemoveAt(i--);
+
+                         continue;
+                     }*/
+
+                    /*if (cur.Min <= prev.Max)
+                    {
+                        MinMax newMinMax = prev;
                         newMinMax.Max = cur.Max;
 
-                    agesToApply[i - 1] = newMinMax;
-                    agesToApply.RemoveAt(i--);
+                        if (cur.Min < prev.Min)
+                            newMinMax.Min = cur.Min;
 
-                    continue;
-                }*/
-
-                /*if (cur.Min <= prev.Max)
+                        agesToApply[i - 1] = newMinMax;
+                        agesToApply.RemoveAt(i--);
+                    }*/
+                }
+           
+                //Message
+                for (int i = 0; i < agesToApply.Count; i++)
                 {
-                    MinMax newMinMax = prev;
-                    newMinMax.Max = cur.Max;
+                    strBuilder.Append($"{agesToApply[i].Min}-{agesToApply[i].Max}");
 
-                    if (cur.Min < prev.Min)
-                        newMinMax.Min = cur.Min;
-
-                    agesToApply[i - 1] = newMinMax;
-                    agesToApply.RemoveAt(i--);
-                }*/
-            }
-
-
-            //Message
-            for (int i = 0; i < agesToApply.Count; i++)
-            {
-                strBuilder.Append($"{agesToApply[i].Min}-{agesToApply[i].Max}");
-
-                if (agesToApply.Count > 1)
-                {
-                    if (i == agesToApply.Count - 2)
-                        strBuilder.Append(" and ");
-                    else if (i < agesToApply.Count - 2)
-                        strBuilder.Append(", ");
+                    if (agesToApply.Count > 1)
+                    {
+                        if (i == agesToApply.Count - 2)
+                            strBuilder.Append(" and ");
+                        else if (i < agesToApply.Count - 2)
+                            strBuilder.Append(", ");
+                    }
                 }
             }
 
