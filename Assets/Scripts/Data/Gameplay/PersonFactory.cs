@@ -91,13 +91,13 @@ namespace MinisterVaccinator.Gameplay
 
             if (!task.Cure.HasNoAge)
             {
+                age = (int)Random.Range(mode.AgeToShow.Min, mode.AgeToShow.Max);
+
                 if (wrongAge)
                 {
                     while (IsInRange(task.Cure.AgesToApply, age))
                         age = (int)Random.Range(mode.AgeToShow.Min, mode.AgeToShow.Max);
                 }
-                else
-                    age = (int)Random.Range(mode.AgeToShow.Min, mode.AgeToShow.Max);
             }
 
             return age;
@@ -146,14 +146,13 @@ namespace MinisterVaccinator.Gameplay
      
         private bool IsInRange(MinMax[] ageToApply, float val)
         {
-            bool isInRange = true;
             for (int i = 0; i < ageToApply.Length; i++)
             {
                 if (!ageToApply[i].IsInRange(val))
                     return false;
             }
 
-            return isInRange;
+            return true;
         }
 
         #endregion

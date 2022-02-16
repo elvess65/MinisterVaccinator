@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afab7ed780e941246bfcf805b2302d86, type: 3}
   m_Name: Task 2 Data
   m_EditorClassIdentifier: 
-  Cure: {fileID: 11400000, guid: 1305261d178433d42b16f2dc02227bee, type: 2}
-  RolesToVaccinate: 4
+  Cure: {fileID: 11400000, guid: 92e72bb43937a4080869d32416aec077, type: 2}
+  RolesToVaccinate: 2

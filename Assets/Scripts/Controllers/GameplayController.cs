@@ -78,7 +78,6 @@ namespace MinisterVaccinator.Controllers
         {
             bool correctAge = false;
 
-            UnityEngine.Debug.Log("Validate person " + person.Role + " " + person.Age + " " + m_GameplayModel.CurrentTask.Cure.HasNoAge);
             if (!m_GameplayModel.CurrentTask.Cure.HasNoAge)
             {
                 foreach (MinMax ageBound in m_GameplayModel.CurrentTask.Cure.AgesToApply)
