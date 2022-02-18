@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Mode 4
   m_EditorClassIdentifier: 
   Tasks:
-  - {fileID: 11400000, guid: deafe45a620334e7eafd62bd8e0c5d61, type: 2}
+  - {fileID: 11400000, guid: 3fc005404863aeb4a8e2b068143a89ac, type: 2}
   Virus: {fileID: 11400000, guid: 763e2ddd18ea54c81b31b9479dda4827, type: 2}
   Population: {fileID: 11400000, guid: c81e288ef2fd14d4f9d6ff95f49e43ba, type: 2}
   PersonsToShow: 2
-  RolesToShow: 12
+  RolesToShow: 23
   AgeToShow:
     min: 20
     max: 75

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Population 1
   m_EditorClassIdentifier: 
   Population: 10
-  VaccinatedPercent: 1
+  VaccinatedPercent: 0
   InfectedPercent: 10

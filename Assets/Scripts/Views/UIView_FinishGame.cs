@@ -83,6 +83,7 @@ namespace MinisterVaccinator.Views
 
             if (m_GameDataModel.CurrentLevel >= m_GameDataModel.Modes.Length)
             {
+                m_GameDataModel.CurrentLevel = 0;
                 m_GameModel.OnTransitionFromGameFinishToMainMenu?.Invoke();
                 return;
             }

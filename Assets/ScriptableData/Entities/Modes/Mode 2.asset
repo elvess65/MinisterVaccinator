@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tasks:
   - {fileID: 11400000, guid: ae76c574e6a285849a58c706d8340770, type: 2}
-  Virus: {fileID: 11400000, guid: 53d2f4a0b3ca5f74d95841168bc1b759, type: 2}
-  Population: {fileID: 11400000, guid: b04f6e174c5704db48badacd4d4dff04, type: 2}
+  Virus: {fileID: 11400000, guid: 1946560f7bf904d7a823059c438c2332, type: 2}
+  Population: {fileID: 11400000, guid: e352dae6e7bf94f4588a790636cd61f8, type: 2}
   PersonsToShow: 2
-  RolesToShow: 12
+  RolesToShow: 23
   AgeToShow:
     min: 20
     max: 75

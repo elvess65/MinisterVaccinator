@@ -7,10 +7,10 @@ namespace MinisterVaccinator.Data.Entities
     public class EntityData_Population : ScriptableObject
     {
         public int Population = 100;
-        [Range(1, 90)]
+        [Range(0, 90)]
         public int VaccinatedPercent = 50;
 
-        [Range(1, 90)]
+        [Range(0, 90)]
         public int InfectedPercent = 50;
 
         public int GetInfectedAmount() => GetAmount(InfectedPercent);

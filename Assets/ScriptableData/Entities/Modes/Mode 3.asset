@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tasks:
   - {fileID: 11400000, guid: deafe45a620334e7eafd62bd8e0c5d61, type: 2}
-  Virus: {fileID: 11400000, guid: 1946560f7bf904d7a823059c438c2332, type: 2}
+  Virus: {fileID: 11400000, guid: 763e2ddd18ea54c81b31b9479dda4827, type: 2}
   Population: {fileID: 11400000, guid: c81e288ef2fd14d4f9d6ff95f49e43ba, type: 2}
   PersonsToShow: 2
   RolesToShow: 7

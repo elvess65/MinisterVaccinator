@@ -16,5 +16,5 @@ MonoBehaviour:
   AgesToApply:
   - min: 20
     max: 30
-  - min: 50
-    max: 80
+  - min: 45
+    max: 55
