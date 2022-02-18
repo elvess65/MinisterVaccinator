@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afab7ed780e941246bfcf805b2302d86, type: 3}
-  m_Name: Task 4 Data
+  m_Name: Task Medic 1
   m_EditorClassIdentifier: 
-  Cure: {fileID: 11400000, guid: a3c585f31bf14904698ded7ac1d9d902, type: 2}
-  RolesToVaccinate: 8
+  Cure: {fileID: 11400000, guid: 92e72bb43937a4080869d32416aec077, type: 2}
+  RolesToVaccinate: 1

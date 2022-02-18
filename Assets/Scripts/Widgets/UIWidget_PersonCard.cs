@@ -47,7 +47,7 @@ namespace MinisterVaccinator.Widgets
            
             Image_Background.color = gameDataModel.UISpriteAssets.GetRandomElementFrom(gameDataModel.UISpriteAssets.Background);
 
-            Text_Age.text = $"Age: {personData.Age}";
+            Text_Age.text = personData.Age > 0 ? $"Age: {personData.Age}" : string.Empty;
             Text_Role.text = personData.Role.ToString();
         }
     }

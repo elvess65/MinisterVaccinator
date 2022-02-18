@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f7e70a8cb8e914db316edffe188edf, type: 3}
+  m_Name: Mode 1
+  m_EditorClassIdentifier: 
+  Tasks:
+  - {fileID: 11400000, guid: 041c7652a177c6a41819de8b077a2a65, type: 2}
+  Virus: {fileID: 11400000, guid: 53d2f4a0b3ca5f74d95841168bc1b759, type: 2}
+  Population: {fileID: 11400000, guid: e352dae6e7bf94f4588a790636cd61f8, type: 2}
+  PersonsToShow: 2
+  RolesToShow: 7
+  AgeToShow:
+    min: 15
+    max: 70

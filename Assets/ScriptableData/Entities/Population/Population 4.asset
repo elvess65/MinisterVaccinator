@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afab7ed780e941246bfcf805b2302d86, type: 3}
-  m_Name: Task 1 Data
+  m_Script: {fileID: 11500000, guid: a80cec778f9e2f5429594136e8d4835e, type: 3}
+  m_Name: Population 4
   m_EditorClassIdentifier: 
-  Cure: {fileID: 11400000, guid: 1305261d178433d42b16f2dc02227bee, type: 2}
-  RolesToVaccinate: 1
+  Population: 25
+  VaccinatedPercent: 15
+  InfectedPercent: 30

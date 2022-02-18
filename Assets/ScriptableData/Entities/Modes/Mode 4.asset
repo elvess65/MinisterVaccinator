@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5f7e70a8cb8e914db316edffe188edf, type: 3}
-  m_Name: Mode 3 Data
+  m_Name: Mode 4
   m_EditorClassIdentifier: 
   Tasks:
-  - {fileID: 11400000, guid: 3fc005404863aeb4a8e2b068143a89ac, type: 2}
-  Virus: {fileID: 11400000, guid: 53d2f4a0b3ca5f74d95841168bc1b759, type: 2}
-  Population: {fileID: 11400000, guid: e352dae6e7bf94f4588a790636cd61f8, type: 2}
+  - {fileID: 11400000, guid: deafe45a620334e7eafd62bd8e0c5d61, type: 2}
+  Virus: {fileID: 11400000, guid: 763e2ddd18ea54c81b31b9479dda4827, type: 2}
+  Population: {fileID: 11400000, guid: c81e288ef2fd14d4f9d6ff95f49e43ba, type: 2}
   PersonsToShow: 2
   RolesToShow: 12
   AgeToShow:

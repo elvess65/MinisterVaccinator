@@ -98,6 +98,8 @@ namespace MinisterVaccinator.Controllers
 
             if (isSuccess)
                 m_VaccinationModel.CurVaccinatedAmount++;
+            else
+                m_VaccinationModel.CurInfectedAmount++;
 
             return isSuccess;
         }

@@ -81,26 +81,22 @@ namespace MinisterVaccinator.Views
         {
             m_GameDataModel.CurrentLevel++;
 
-            //TODO: Restart the level
+            if (m_GameDataModel.CurrentLevel >= m_GameDataModel.Modes.Length)
+            {
+                m_GameModel.OnTransitionFromGameFinishToMainMenu?.Invoke();
+                return;
+            }
 
-            Debug.Log("UIView_FinishGame - NextButtonPress. TODO: Increment level. Restart the level");
             m_GameModel.OnTransitionFromGameFinishToNewGame?.Invoke();
         }
 
         private void UIWidgetRestartButtonPressHandler()
         {
-            m_GameDataModel.CurrentLevel++;
-            //TODO: Restart the level
-
-            Debug.Log("UIView_FinishGame - RestartButtonPress. TODO: Restart the level");
             m_GameModel.OnTransitionFromGameFinishToNewGame?.Invoke();
         }
 
         private void UIWidgetMenuButtonPressHandler()
         {
-            //TODO: Go to main menu
-
-            Debug.Log("UIView_FinishGame - MenuButtonPress. TODO: Go to main menu");
             m_GameModel.OnTransitionFromGameFinishToMainMenu?.Invoke();
         }
 
